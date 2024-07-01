@@ -1,0 +1,72 @@
+<nav class="nav1">
+  <div class="navTop">
+    <div class="navItem">
+      <img src="assets/img/1.png" width="50px" height="50px" (click)="openCart()">
+    </div>
+    <div class="navItem">
+      <div class="search">
+        <input type="text" placeholder="search" class="searchInput" [(ngModel)]="searchQuery">
+        <img src="assets/img/searchicon.png" width="20" height="20" class="searchIcon" (click)="search()">
+      </div>
+    </div>
+    <div class="navItem">
+      <span class="limitedOffer">Get Limited Offers!!!</span>
+    </div>
+  </div>
+</nav>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasCartLabel">Shopping Cart</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div *ngIf="cart.length === 0">Your cart is empty</div>
+    <div *ngIf="cart.length > 0">
+      <div *ngFor="let item of cart; let i = index" class="card mb-3">
+        <img [src]="item.images[0]" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{item.title}}</h5>
+          <p class="card-text">{{item.price.current | currency}}</p>
+          <p class="card-text">{{item.brand}}</p>
+          <button class="btn btn-danger" (click)="removeFromCart(i)">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <button class="categoryBtn" onclick="hideShow()">Search Items By Category</button>
+<div id="dropDownSearch" class="dropDownSearch">
+    <div class="buttonSearch">
+        <div class="inputLabels">
+            <label for="id1">Search for product by name</label>
+            <input type="text" placeholder="Search for product by name" class="form-control" id="id1">
+            <label for="minPrice">Enter Minimum Price</label>
+            <input type="number" placeholder="Enter Minimum Price" class="form-control" id="minPrice">
+            <label for="maxPrice">Enter Maximum Price</label>
+            <input type="number" placeholder="Enter Maximum Price" class="form-control" id="maxPrice">
+            <button class="btn btn-success mt-2" id="search">Search</button>
+            <button class="btn btn-clear" id="clear">Clear</button> 
+        </div>
+
+        <div class="brandButtons">
+            <button class="btn btn-apple brand" value="apple">Apple</button>
+            <button class="btn btn-xiaomi brand" value="xiaomi">Xiaomi</button>
+            <button class="btn btn-samsung brand" value="samsung">Samsung</button>
+            <button class="btn btn-asus brand" value="asus">Asus</button>
+            <button class="btn btn-honor brand" value="honor">Honor</button>
+            <button class="btn btn-oneplus brand" value="oneplus">OnePlus</button>
+            <button class="btn btn-lenovo brand" value="lenovo">Lenovo</button>
+            <button class="btn btn-hp brand" value="hp">HP</button>
+            <button class="btn btn-acer brand" value="acer">Acer</button>
+            <button class="btn btn-dell brand" value="dell">Dell</button>
+            <button class="btn btn-msi brand" value="msi">MSI</button>
+            <button class="btn btn-lg brand" value="lg">LG</button>
+        </div>
+
+        <section></section>
+    
+    </div>
+</div> -->
